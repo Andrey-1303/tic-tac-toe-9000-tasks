@@ -1,15 +1,16 @@
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod, abstractproperty
 from typing import List, Callable
 from dataclasses import dataclass
+from dataclasses_json import dataclass_json
 
-
+@dataclass_json
 @dataclass
 class TicTacToeTurn:
     player_id: str
     x_coordinate: int
     y_coordinate: int
 
-
+@dataclass_json
 @dataclass
 class TicTacToeGameInfo:
     game_id: str
@@ -18,7 +19,6 @@ class TicTacToeGameInfo:
     first_player_id: str
     second_player_id: str
     winner_id: str # а какие могут быть варианты?
-
 
 class AbstractTicTacToeGame(ABC):
     @abstractmethod
@@ -43,4 +43,3 @@ class AbstractTicTacToeGame(ABC):
     @abstractmethod
     def get_game_info(self) -> TicTacToeGameInfo:
         """обычный геттер"""
-
